@@ -29,3 +29,19 @@ header{
   border: none;
   border-radius: 10px;
 }
+
+table {
+  margin: 0 auto;
+  width: 50%; /* Set the table width to 100% of its container */
+  /* border-collapse: collapse;  */
+}
+
+th, td {
+  padding: 8px; /* Add padding to the table cells */
+  text-align: left; /* Align the content of cells to the left */
+  border-bottom: 1px solid #ddd; /* Add a bottom border to the cells */
+}
+
+th {
+  background-color: #e8dfdf; /* Set a background color for the table header cells */
+}
