@@ -2,27 +2,15 @@ import React, {useState} from 'react';
 import axios from 'axios';
 const ProductForm = (props) => {
   //keep track of what is being typed via useState hook
-  const {product, setProduct} = props;
-  const [title, setTitle] = useState ('');
-  const [price, setPrice] = useState (null);
-  const [description, setDescription] = useState ('');
+  const {actionType,onSubmitProp, initialTitle, initialPrice, initialDescription} = props;
+  const [title, setTitle] = useState (initialTitle);
+  const [price, setPrice] = useState (initialPrice);
+  const [description, setDescription] = useState (initialDescription);
   //handler when the form is submitted
   const onSubmitHandler = e => {
     //prevent default behavior of the submit
     e.preventDefault ();
-    //make a post request to create a new product
-    axios
-      .post ('http://localhost:8000/api/product', {
-        title,
-        price,
-        description,
-      })
-      .then (res => {
-        console.log (res);
-        console.log (res.data);
-        setProduct([...product, res.data]);
-      })
-      .catch (err => console.log (err));
+    onSubmitProp({ title, price, description });
 
       setTitle("");
       setPrice("");
@@ -51,7 +39,12 @@ const ProductForm = (props) => {
           <input type="text" value={description} onChange={e => setDescription (e.target.value)} />
         </div>
         <br />
-        <input className="submit-input" type="submit" value="Create"/>
+        {actionType == "create"?
+          
+          <input className="submit-input" type="submit" value="Create" />
+          :<input className="submit-input" type="submit" value="Update" />
+         }
+        
       </form>
     </div>
   );
