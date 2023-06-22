@@ -4,7 +4,7 @@ module.exports.createProduct = (request, response) => {
     
     Product.create(request.body) //This will use whatever the body of the client's request sends over
         .then(product => response.json(product))
-        .catch(err => response.json(err));
+        .catch(err => response.status(400).json(err));
 }
 module.exports.getAllProducts = (request, response) => {
     Product.find({})

@@ -17,11 +17,14 @@ const ProductList = props => {
         All Products
       </header>
       <table>
+        <thead>
         <tr>
           <th>Title</th>
           <th>Edit</th>
           <th>Delete</th>
         </tr>
+        </thead>
+        <tbody>
         {productList.map ((product, index) => {
           return (
             <tr key={index}>
@@ -44,6 +47,7 @@ const ProductList = props => {
             </tr>
           );
         })}
+        </tbody>
       </table>
     </div>
   );

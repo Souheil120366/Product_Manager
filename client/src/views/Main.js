@@ -2,12 +2,16 @@ import React, { useEffect,useState } from 'react';
 import axios from 'axios';
 import ProductForm from '../components/ProductForm';
 import ProductList from '../components/ProductList';
+
+const url="";
+// const url ='http://localhost:8001';
+
 const Main = (props) => {
     
     const [productList, setProductList] = useState([]);
-
+    const [errors, setErrors] = useState([]);
     useEffect(() => {
-        axios.get('http://localhost:8001/api/product')
+        axios.get(url+'/api/product')
             .then(res => {
                 setProductList(res.data)
             })
@@ -16,19 +20,22 @@ const Main = (props) => {
 
     const createProduct = productParam => {
         
-        axios.post('http://localhost:8001/api/product', productParam)
+        axios.post(url+'/api/product', productParam)
             .then(res => {
-                console.log(res);
-                console.log(res.data)
+                
+                
                 setProductList([...productList, res.data])
             })
-            .catch((err)=>console.log(err))
+            // .catch((err)=>console.log(err))
+            .catch(err=>{
+                setErrors(err.response.data.errors);
+            }) 
     }
-
+    
     return (
         <div>
     	
-           <ProductForm actionType={"create"} onSubmitProp={createProduct}  initialTitle="" initialPrice="" initialDescription="" />
+           <ProductForm errors={errors} setErrors={setErrors} actionType={"create"} onSubmitProp={createProduct}  initialTitle="" initialPrice="" initialDescription="" />
             <hr/>
            <ProductList productList={productList} setProductList={setProductList} />
         </div>

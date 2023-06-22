@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 //This will create a database named "product" if one doesn't already exist (no need for mongo shell!):
-mongoose.connect("mongodb://127.0.0.1:27017/product", { 
+mongoose.connect("mongodb+srv://admin:souh120366@cluster0.toyk8.mongodb.net/product?retryWrites=true&w=majority", { 
     useNewUrlParser: true, 
     useUnifiedTopology: true,
 })
