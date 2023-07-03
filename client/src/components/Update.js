@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { useNavigate, useParams } from "react-router-dom";
 import ProductForm from '../components/ProductForm';
-import DeleteButton from '../components/DeleteButton';
+import DeleteProduct from '../components/DeleteProduct';
 
 const Update = (props) => {
     const { id } = useParams(); //this process is identical to the one we used with our Details.js component
@@ -12,8 +12,8 @@ const Update = (props) => {
     const navigate = useNavigate();
     // retrieve the current values for this person so we can fill
     // in the form with what is in the db currently
-    const url="";
-    // const url ='http://localhost:8001';
+    // const url="";
+    const url ='http://localhost:8001';
     useEffect(() => {
         axios.get(url+`/api/product/${id}`)
             .then(res => { 
@@ -23,8 +23,8 @@ const Update = (props) => {
             .catch(err => console.log(err))
     }, [])
     const updateProduct = productParam => {
-        
-        axios.put(url+`/api/product/${id}`,productParam)
+        console.log('param',productParam);
+        axios.put(url+`/api/product/${id}`,productParam, {withCredentials:true,})
             .then(res => {
                 console.log(res);
                 navigate("/home"); 
@@ -41,7 +41,7 @@ const Update = (props) => {
             initialDescription={product.description}
             />
             }
-            <DeleteButton productId={product._id} successCallback={() => navigate("/home")} />
+            <DeleteProduct productId={product._id} successCallback={() => navigate("/")} />
         </div>
     )
 }

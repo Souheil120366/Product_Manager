@@ -10,8 +10,8 @@ header{
 .form-fields{
   color:rgb(135, 136, 135);
   display: flex;
-  justify-content: space-between;
-  width: 300px;
+  justify-content: space-around;
+  width: 500px;
   height: 30px;
   margin: auto;
   border-radius: 30px;
@@ -31,8 +31,8 @@ header{
 }
 
 table {
-  margin: 0 auto;
-  width: 50%; /* Set the table width to 100% of its container */
+  margin: 5%;
+  width: 100%; /* Set the table width to 100% of its container */
   /* border-collapse: collapse;  */
 }
 
@@ -45,3 +45,8 @@ th, td {
 th {
   background-color: #e8dfdf; /* Set a background color for the table header cells */
 }
+
+.container {
+  display: flex;
+  justify-content: space-around;
+} 

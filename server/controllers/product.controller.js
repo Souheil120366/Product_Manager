@@ -23,9 +23,9 @@ module.exports.getProduct = (request, response) => {
         .catch(err => response.json(err));
 }
 module.exports.updateProduct = (request, response) => {
-    Product.findOneAndUpdate({_id: request.params.id}, request.body, {new:true})
+    Product.findOneAndUpdate({_id: request.params.id}, request.body, {new:true, runValidators: true})
         .then(updatedProduct => response.json(updatedProduct))
-        .catch(err => response.json(err))
+        .catch(err => response.status(400).json(err))
 }
 module.exports.deleteProduct = (request, response) => {
     Product.deleteOne({ _id: request.params.id }) //note: "id" here MUST match id in corresponding route

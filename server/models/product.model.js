@@ -5,7 +5,8 @@ const ProductSchema = new mongoose.Schema({
         required: [
             true,
             "Title is required"
-        ]
+        ],
+        minlength: [3, "Title must be at least 3 characters long"],
      },
     price: { 
         type: Number,
@@ -19,7 +20,8 @@ const ProductSchema = new mongoose.Schema({
         required: [
             true,
             "Description is required"
-        ]
+        ],
+        minlength: [3, "Description must be at least 3 characters long"],
      },
 }, { timestamps: true });
 module.exports = mongoose.model('Product', ProductSchema);

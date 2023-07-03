@@ -1,8 +1,8 @@
-import React, {useEffect} from 'react';
-import axios from 'axios';
+import React from 'react';
+
 import '../App.css';
 import {Link} from 'react-router-dom';
-import DeleteButton from './DeleteButton';
+import DeleteProduct from './DeleteProduct';
 
 const ProductList = props => {
   const {productList, setProductList} = props;
@@ -29,17 +29,17 @@ const ProductList = props => {
           return (
             <tr key={index}>
               <td>
-                <Link to={`/${product._id}`}>
+                <Link to={`/home/${product._id}`}>
                   {' '}{product.title}{' '}
                 </Link>
               </td>
               <td>
-                <Link to={'/edit/' + product._id}>
+                <Link to={'/home/edit/' + product._id}>
                   Edit
                 </Link>
               </td>
               <td>
-                <DeleteButton
+                <DeleteProduct
                   productId={product._id}
                   successCallback={() => removeFromDom (product._id)}
                 />

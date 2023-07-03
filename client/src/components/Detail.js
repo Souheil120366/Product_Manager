@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import '../App.css';
 import {useParams} from "react-router-dom";
-const url="";
-// const url ='http://localhost:8001';
+// const url="";
+const url ='http://localhost:8001';
 const Detail = (props) => {
     const [product, setProduct] = useState({})
     const {id} = useParams(); 
