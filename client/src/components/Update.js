@@ -34,7 +34,7 @@ const Update = (props) => {
             })
     }
     return (
-        <div>
+        <div className="update">
             <h1>Update a Product</h1>
             {
             loaded && <ProductForm errors={errors} setErrors={setErrors} actionType={"update"} onSubmitProp={updateProduct} initialTitle={product.title} initialPrice={product.price}

@@ -11,8 +11,8 @@ header{
   color:rgb(135, 136, 135);
   display: flex;
   justify-content: space-around;
-  width: 500px;
-  height: 30px;
+  width: 130%;
+  height: 10%;
   margin: auto;
   border-radius: 30px;
   padding:15px;
@@ -21,6 +21,7 @@ header{
 
 .form-fields>input{
   border-radius: 30px;
+  width:50%;
   padding:10px;
 }
 
@@ -32,7 +33,7 @@ header{
 
 table {
   margin: 5%;
-  width: 100%; /* Set the table width to 100% of its container */
+  width: 150%; /* Set the table width to 100% of its container */
   /* border-collapse: collapse;  */
 }
 
@@ -49,4 +50,17 @@ th {
 .container {
   display: flex;
   justify-content: space-around;
+  width: 90%;
 } 
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  
+  margin: auto;
+}
+.update{
+  width: 50%;
+  margin-left: 15%;
+}

@@ -6,6 +6,7 @@ import DeleteProduct from './DeleteProduct';
 
 const ProductList = props => {
   const {productList, setProductList} = props;
+  const token = localStorage.getItem('userInfo');
 
   const removeFromDom = productId => {
     setProductList (productList.filter (product => product._id !== productId));
@@ -20,8 +21,12 @@ const ProductList = props => {
         <thead>
         <tr>
           <th>Title</th>
+          {token?
           <th>Edit</th>
+          :null}
+          {token?
           <th>Delete</th>
+          :null}
         </tr>
         </thead>
         <tbody>
@@ -33,17 +38,21 @@ const ProductList = props => {
                   {' '}{product.title}{' '}
                 </Link>
               </td>
+              {token?
               <td>
                 <Link to={'/home/edit/' + product._id}>
                   Edit
                 </Link>
               </td>
+              :null}
+              {token?
               <td>
                 <DeleteProduct
                   productId={product._id}
                   successCallback={() => removeFromDom (product._id)}
                 />
               </td>
+              :null}
             </tr>
           );
         })}

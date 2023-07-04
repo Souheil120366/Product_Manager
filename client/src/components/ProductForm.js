@@ -18,13 +18,7 @@ const ProductForm = props => {
   const [description, setDescription] = useState (initialDescription);
   //handler when the form is submitted
   const navigate=useNavigate();
-  const logout = e => {
-    e.preventDefault ();
-    axios.post("http://localhost:8001/api/users/logout",{},{withCredentials:true,})
-    .then(res => {console.log (res.data); navigate('/'); })
-    .catch(err => {console.log(err);});
-    };
-
+  
   const onSubmitHandler = e => {
     //prevent default behavior of the submit
     e.preventDefault ();
@@ -33,10 +27,7 @@ const ProductForm = props => {
 
   return (
     <div>
-      <div>
-        <button onClick={(e)=>logout(e)}>Logout</button>
       
-      </div>
       <header>
         Product Manager
       </header>
