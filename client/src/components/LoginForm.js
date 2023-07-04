@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 
+const url="";
+// const url ='http://localhost:8001';
 const LoginForm = props => {
   //keep track of what is being typed via useState hook
 //   const {errors, setErrors} = props;
@@ -15,7 +17,7 @@ const LoginForm = props => {
   const onSubmitHandler = e => {
     //prevent default behavior of the submit
     e.preventDefault ();
-    axios.post("http://localhost:8001/api/users/login",{email: email, password: password},{withCredentials:true,})
+    axios.post(url+"/api/users/login",{email: email, password: password},{withCredentials:true,})
     .then(res => {
         console.log ("user",res.data);
         localStorage.setItem('userInfo',JSON.stringify(res.data));

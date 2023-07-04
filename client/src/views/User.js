@@ -4,10 +4,10 @@ import { useNavigate } from "react-router-dom";
 import '../App.css';
 import RegisterForm from '../components/RegisterForm';
 import LoginForm from '../components/LoginForm';
-import UserList from '../components/UserList';
+// import UserList from '../components/UserList';
 
-// const url="";
-const url ='http://localhost:8001';
+const url="";
+// const url ='http://localhost:8001';
 
 const User = () => {
     

@@ -7,8 +7,8 @@ import {useNavigate} from 'react-router-dom';
 import ProductForm from '../components/ProductForm';
 import ProductList from '../components/ProductList';
 
-// const url="";
-const url = 'http://localhost:8001';
+const url="";
+// const url = 'http://localhost:8001';
 
 const Product = props => {
   const [productList, setProductList] = useState ([]);
@@ -38,7 +38,7 @@ const Product = props => {
     e.preventDefault ();
     axios
       .post (
-        'http://localhost:8001/api/users/logout',
+        url +'/api/users/logout',
         {},
         {withCredentials: true}
       )

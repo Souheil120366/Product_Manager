@@ -12,8 +12,8 @@ const Update = (props) => {
     const navigate = useNavigate();
     // retrieve the current values for this person so we can fill
     // in the form with what is in the db currently
-    // const url="";
-    const url ='http://localhost:8001';
+    const url="";
+    // const url ='http://localhost:8001';
     useEffect(() => {
         axios.get(url+`/api/product/${id}`)
             .then(res => { 

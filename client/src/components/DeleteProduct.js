@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios';
-// const url="";
-const url ="http://localhost:8001";
+const url="";
+// const url ="http://localhost:8001";
 const DeleteProduct = (props) => {
     const { productId, successCallback } = props;
     const deleteProduct = e => {
