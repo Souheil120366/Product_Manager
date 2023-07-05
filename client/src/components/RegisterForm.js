@@ -104,7 +104,7 @@ const RegisterForm = props => {
         {errors.confirmPassword ? <span>{errors.confirmPassword.message}</span> : null}
         <br />
         {actionType == 'create'
-          ? <input className="submit-input" type="submit" value="Signup" />
+          ? <input className="submit-input" type="submit" value="Sign Up" />
           : <input className="submit-input" type="submit" value="Update" />}
 
       </form>
