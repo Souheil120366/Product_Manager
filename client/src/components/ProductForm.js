@@ -1,6 +1,9 @@
 import React, {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
-// import axios from 'axios';
+import Form from 'react-bootstrap/Form';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Button from 'react-bootstrap/Button';
 
 const ProductForm = props => {
   //keep track of what is being typed via useState hook
@@ -17,8 +20,8 @@ const ProductForm = props => {
   const [price, setPrice] = useState (initialPrice);
   const [description, setDescription] = useState (initialDescription);
   //handler when the form is submitted
-  const navigate=useNavigate();
-  
+  const navigate = useNavigate ();
+
   const onSubmitHandler = e => {
     //prevent default behavior of the submit
     e.preventDefault ();
@@ -26,61 +29,63 @@ const ProductForm = props => {
   };
 
   return (
-    <div>
-      
-      <header>
-        Product Manager
-      </header>
-      <form onSubmit={onSubmitHandler}>
-        {/* {errors.map((err, index) => <p key={index}>{err}</p>)} */}
+    <Container >
+      <Row>
+      {actionType == 'create'
+        ? <h2>Create Product</h2>
+        : <h2>Update Product</h2>}
+        
+        <Form onSubmit={onSubmitHandler}>
+          <Form.Group className="mb-3">
 
-        <div className="form-fields">
+            <Form.Label>Title</Form.Label>
+            <Form.Control
+              type="text"
+              value={title}
+              onChange={e => {
+                setTitle (e.target.value);
+                setErrors ([]);
+              }}
+            />
 
-          <label>Title</label><br />
-          <input
-            type="text"
-            value={title}
-            onChange={e => {
-              setTitle (e.target.value);
-              setErrors ([]);
-            }}
-          />
+          </Form.Group>
+          {errors.title ? <span>{errors.title.message}</span> : null}
 
-        </div>
-        {errors.title ? <span>{errors.title.message}</span> : null}
-        <br />
-        <div className="form-fields">
-          <label>Price</label><br />
-          <input
-            type="number"
-            value={price}
-            onChange={e => {
-              setPrice (e.target.value);
-              setErrors ([]);
-            }}
-          />
-        </div>
-        {errors.price ? <span>{errors.price.message}</span> : null}
-        <br />
-        <div className="form-fields">
-          <label>Description</label><br />
-          <input
-            type="text"
-            value={description}
-            onChange={e => {
-              setDescription (e.target.value);
-              setErrors ([]);
-            }}
-          />
-        </div>
-        {errors.description ? <span>{errors.description.message}</span> : null}
-        <br />
-        {actionType == 'create'
-          ? <input className="submit-input" type="submit" value="Create" />
-          : <input className="submit-input" type="submit" value="Update" />}
+          <Form.Group className="mb-3">
+            <Form.Label>Price</Form.Label>
+            <Form.Control
+              type="number"
+              value={price}
+              onChange={e => {
+                setPrice (e.target.value);
+                setErrors ([]);
+              }}
+            />
+          </Form.Group>
+          {errors.price ? <span>{errors.price.message}</span> : null}
 
-      </form>
-    </div>
+          <Form.Group className="mb-3">
+            <Form.Label>Description</Form.Label>
+            <Form.Control
+              type="text"
+              value={description}
+              onChange={e => {
+                setDescription (e.target.value);
+                setErrors ([]);
+              }}
+            />
+          </Form.Group>
+          {errors.description
+            ? <span>{errors.description.message}</span>
+            : null}
+
+          {actionType == 'create'
+            ? <Button type="submit">Create</Button>
+            : <Button type="submit">Update</Button>}
+
+        </Form>
+      </Row>
+    </Container>
   );
 };
 export default ProductForm;

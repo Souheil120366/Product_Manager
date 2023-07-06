@@ -1,5 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
+import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import {useNavigate, useParams} from 'react-router-dom';
 import ProductForm from '../components/ProductForm';
 import DeleteProduct from '../components/DeleteProduct';
@@ -13,7 +17,7 @@ const Update = props => {
   // retrieve the current values for this person so we can fill
   // in the form with what is in the db currently
   const url = '';
-  // const url ='http://localhost:8001';
+  
   useEffect (() => {
     axios
       .get (url + `/api/product/${id}`)
@@ -32,27 +36,31 @@ const Update = props => {
         navigate ('/home');
       })
       .catch (err => {
-        setErrors (err.response.data.errors);
+        if (err.response.status === 401) navigate ('/');
+        else {
+          setErrors (err.response.data.errors);
+        }
       });
   };
   return (
-    <div className="update">
-      <h1>Update a Product</h1>
-      {loaded &&
-        <ProductForm
-          errors={errors}
-          setErrors={setErrors}
-          actionType={'update'}
-          onSubmitProp={updateProduct}
-          initialTitle={product.title}
-          initialPrice={product.price}
-          initialDescription={product.description}
-        />}
-      <DeleteProduct
-        productId={product._id}
-        successCallback={() => navigate ('/')}
-      />
-    </div>
+    <Container className="mt-5">
+      <Row>
+        <Col>
+
+          {loaded &&
+            <ProductForm
+              errors={errors}
+              setErrors={setErrors}
+              actionType={'update'}
+              onSubmitProp={updateProduct}
+              initialTitle={product.title}
+              initialPrice={product.price}
+              initialDescription={product.description}
+            />}
+        </Col>
+
+      </Row>
+    </Container>
   );
 };
 export default Update;

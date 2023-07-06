@@ -1,7 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
-import '../App.css';
+// import '../App.css';
+
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import RegisterForm from '../components/RegisterForm';
 import LoginForm from '../components/LoginForm';
 // import UserList from '../components/UserList';
@@ -28,21 +32,26 @@ const User = () => {
   };
 
   return (
-    <div className="container">
+    <Container fluid>
+      <Row>
+        <Col>
+          <RegisterForm
+            errors={errors}
+            setErrors={setErrors}
+            actionType={'create'}
+            onSubmitProp={register}
+            initialFirstName=""
+            initialLastName=""
+            initialEmail=""
+          />
+        </Col>
 
-      <RegisterForm
-        errors={errors}
-        setErrors={setErrors}
-        actionType={'create'}
-        onSubmitProp={register}
-        initialFirstName=""
-        initialLastName=""
-        initialEmail=""
-      />
-
-      <LoginForm errors={errors} setErrors={setErrors} />
-      {/* <UserList userList={userList} setUserList={setUserList} /> */}
-    </div>
+        <Col>
+          <LoginForm errors={errors} setErrors={setErrors} />
+          {/* <UserList userList={userList} setUserList={setUserList} /> */}
+        </Col>
+      </Row>
+    </Container>
   );
 };
 export default User;

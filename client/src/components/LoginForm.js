@@ -1,5 +1,9 @@
 import React, {useState} from 'react';
 import axios from 'axios';
+import Form from 'react-bootstrap/Form';
+import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
 import {useNavigate} from 'react-router-dom';
 
 const url = '';
@@ -35,43 +39,42 @@ const LoginForm = props => {
   };
 
   return (
-    <div>
-      <header>
-        User Login
-      </header>
-      <p>{errors ? errors : ''}</p>
-      <form onSubmit={onSubmitHandler}>
+    <Container>
+      <Row>
+        <h1>
+          User Login
+        </h1>
+        <p>{errors ? errors : ''}</p>
+        <Form onSubmit={onSubmitHandler}>
 
-        <br />
-        <div className="form-fields">
-          <label>Email</label><br />
-          <input
-            type="text"
-            value={email}
-            onChange={e => {
-              setEmail (e.target.value);
-              setErrors ([]);
-            }}
-          />
-        </div>
+          <Form.Group className="mb-3">
+            <Form.Label>Email</Form.Label><br />
+            <Form.Control
+              type="text"
+              value={email}
+              onChange={e => {
+                setEmail (e.target.value);
+                setErrors ([]);
+              }}
+            />
+          </Form.Group>
 
-        <br />
-        <div className="form-fields">
-          <label>Password</label><br />
-          <input
-            type="password"
-            value={password}
-            onChange={e => {
-              setPassword (e.target.value);
-              setErrors ([]);
-            }}
-          />
-        </div>
+          <Form.Group className="mb-3">
+            <Form.Label>Password</Form.Label><br />
+            <Form.Control
+              type="password"
+              value={password}
+              onChange={e => {
+                setPassword (e.target.value);
+                setErrors ([]);
+              }}
+            />
+          </Form.Group>
 
-        <br />
-        <input className="submit-input" type="submit" value="Sign In" />
-      </form>
-    </div>
+          <Button type="submit">Sign In</Button>
+        </Form>
+      </Row>
+    </Container>
   );
 };
 export default LoginForm;

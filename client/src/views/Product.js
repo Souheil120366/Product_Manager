@@ -1,14 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-// import jwt from 'jsonwebtoken';
-// import Cookies from 'js-cookie';
-// import { useCookies } from 'react-cookie';
+import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import {useNavigate} from 'react-router-dom';
 import ProductForm from '../components/ProductForm';
 import ProductList from '../components/ProductList';
 
 const url = '';
-// const url ='';
+
 
 const Product = props => {
   const [productList, setProductList] = useState ([]);
@@ -65,32 +66,41 @@ const Product = props => {
   };
 
   return (
-    <div>
-      <div className="header">
-        <p>{firstName} {lastName}</p>
-        <button onClick={e => logout (e)}>Logout</button>
-      </div>
+    <Container className="mt-4">
+      <Row>
 
-      <div className="container">
+        <Col>
+          <p>{firstName} {lastName}</p>
+        </Col>
+        <Col>
+          <Button onClick={e => logout (e)}>Logout</Button>
+        </Col>
 
-        {firstName
-          ? <ProductForm
-              errors={errors}
-              setErrors={setErrors}
-              actionType={'create'}
-              onSubmitProp={createProduct}
-              initialTitle=""
-              initialPrice=""
-              initialDescription=""
-            />
-          : null}
+      </Row>
+      <Row>
+        <Col>
 
-        <ProductList
-          productList={productList}
-          setProductList={setProductList}
-        />
-      </div>
-    </div>
+          {firstName
+            ? <ProductForm
+                errors={errors}
+                setErrors={setErrors}
+                actionType={'create'}
+                onSubmitProp={createProduct}
+                initialTitle=""
+                initialPrice=""
+                initialDescription=""
+              />
+            : null}
+        </Col>
+        <Col>
+          <ProductList
+            productList={productList}
+            setProductList={setProductList}
+          />
+        </Col>
+
+      </Row>
+    </Container>
   );
 };
 export default Product;
